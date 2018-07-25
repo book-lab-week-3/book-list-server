@@ -16,16 +16,15 @@ client.on('error', err => console.log(err));
 app.use(cors());
 
 // API endpoints
-app.get('api/v1/books', (request, response) => {
-  let SQL = 'SELECT book_id, title, author, image_url, isbn FROM books';
-
+app.get('/api/v1/books', (request, response) => {
+  let SQL = 'SELECT book_id, author, title, image_url FROM books;';
   client.query(SQL)
     .then(results => response.send(results.rows))
     .catch(console.error);
 })
 
 // Note: this is our proof of life for deployment.
-app.get('/', (request, response) => response.send('Testing'));
+// app.get('/', (request, response) => response.send('Testing'));
 
 app.get('*', (request, response) => response.status(404).send('Page does not exist'));
 
