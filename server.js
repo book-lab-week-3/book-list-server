@@ -5,15 +5,12 @@ const cors = require('cors');
 const pg = require('pg');
 const app = express();
 const PORT = process.env.PORT || 3000;
+// const conString = process.env.DATABASE_URL;
 const conString = 'postgres://postgres:1234@localhost:5432/books_app';
 // setting up the DB
 const client = new pg.Client(conString);
 client.connect();
 client.on('error', err => console.log(err));
-
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.static('./../book-list-client'));
 
 // middleware
 app.use(cors());
@@ -26,7 +23,6 @@ app.get('api/v1/books', (request, response) => {
     .then(results => response.send(results.rows))
     .catch(console.error);
 })
-
 
 // Note: this is our proof of life for deployment.
 app.get('/', (request, response) => response.send('Testing'));
