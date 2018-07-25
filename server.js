@@ -1,18 +1,3 @@
-// 'use strict';
-
-// const express = require('express');
-// const app = express();
-// const PORT = process.env.PORT || 3000;
-
-// Note: this is our proof of life for deployment.
-// app.use(express.json())
-// app.use(express.urlencoded())
-// app.use(express.static(''))
-// app.get('', (req, res) => res.sendFile('/book-list-client/index.html'));
-
-
-// app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
-
 'use strict';
 
 const express = require('express');
