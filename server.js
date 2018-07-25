@@ -16,8 +16,12 @@ app.use(cors());
 
 // API endpoints
 app.get('/api/v1/books', (request, response) => {
+<<<<<<< HEAD
   let SQL = 'SELECT book_id, title, author, image_url, isbn FROM books';
 
+=======
+  let SQL = 'SELECT book_id, author, title, image_url FROM books;';
+>>>>>>> c72cdb792673032c755d8f9265b7430b4c232c47
   client.query(SQL)
     .then(results => response.send(results.rows))
     .catch(console.error);
