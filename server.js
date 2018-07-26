@@ -31,6 +31,18 @@ app.get('/api/v1/books/:id', (request, response) => {
     .catch(console.error);
 })
 
+app.post('/api/v1/books', (request, response) => {
+  let SQL = 'INSERT INTO books (author, title, image_url, isbn, description) VALUES ($1, $2, $3, $4, $5)';
+  let values = [request.body.author,
+    request.body.title,
+    request.body.image_url,
+    request.body.isbn,
+    request.body.description];
+  client.query(SQL, values)
+    .then(results => response.send(results.rows))
+    .catch(console.error);
+})
+
 // Note: this is our proof of life for deployment.
 // app.get('/', (request, response) => response.send('Testing'));
 
