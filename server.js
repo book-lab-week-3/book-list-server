@@ -23,6 +23,14 @@ app.get('/api/v1/books', (request, response) => {
     .catch(console.error);
 })
 
+app.get('/api/v1/books/:id', (request, response) => {
+  let SQL = 'SELECT book_id, author, title, image_url, isbn, description FROM books WHERE book_id=$1;';
+  let values = [request.params.id];
+  client.query(SQL, values)
+    .then(results => response.send(results.rows))
+    .catch(console.error);
+})
+
 // Note: this is our proof of life for deployment.
 // app.get('/', (request, response) => response.send('Testing'));
 
