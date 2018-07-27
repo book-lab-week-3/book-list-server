@@ -3,6 +3,7 @@
 const express = require('express');
 const cors = require('cors');
 const pg = require('pg');
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 // const conString = process.env.DATABASE_URL;
@@ -14,8 +15,7 @@ client.on('error', err => console.log(err));
 
 // middleware
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+
 
 // API endpoints
 app.get('/api/v1/books', (request, response) => {
